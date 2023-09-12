@@ -48,4 +48,9 @@
 		delete gallery where gallery_idx=#{gallery_idx}
 	</delete>
 	
+	<!-- 게시물 수정(한 건) -->
+	<update id="update" parameterType="Gallery">
+		update gallery set title=#{title}, writer=#{writer}, content=#{content} where gallery_idx=#{gallery_idx}
+	</update>
+	
 </mapper>

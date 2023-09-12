@@ -1,4 +1,4 @@
-package org.sp.springapp.controller;
+package org.sp.springapp.controller.client;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -124,7 +124,7 @@ public class GalleryController {
 	//삭제요청 처리
 	@RequestMapping(value="/gallery/delete", method=RequestMethod.POST)
 	public String del(int gallery_idx, String[] filename, HttpServletRequest request) {
-		//3단게: 삭제
+		//3단계: 삭제
 		ServletContext context = request.getSession().getServletContext();
 		
 		for(String str : filename) {
@@ -139,6 +139,23 @@ public class GalleryController {
 		galleryService.delete(gallery_idx); //db 삭제
 		
 		//4단계: 리스트를 재요청 들어오게 할 것이므로, jsp로 가져갈 것이 없다 -> redirect
+		return "redirect:/gallery/list";
+	}
+	
+	@RequestMapping(value="/gallery/update", method=RequestMethod.POST)
+	public String update(Gallery gallery, String[] filename, HttpServletRequest request) {
+		//3단계: 삭제
+//		ServletContext context = request.getSession().getServletContext();
+//		
+//		for(String str:filename) {
+//		
+//			//삭제될 파일의 풀 경로 얻기
+//			String path = context.getRealPath("/resources/data/"+str);	
+//			fileManager.remove(path);
+//		}
+
+		galleryService.update(gallery);
+		
 		return "redirect:/gallery/list";
 	}
 	

@@ -19,5 +19,9 @@
 	</delete>
 	
 	<!-- 부모의 fk를 조건으로 하는 레코드 수정. update문 -->
+	<update id="update" parameterType="GalleryImg">
+		update gallery_img set filename=#{filename} 
+		where gallery_idx=#{gallery.gallery_idx}
+	</update>
 
 </mapper>

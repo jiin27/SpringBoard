@@ -50,8 +50,15 @@ public class MybatisGalleryDAO implements GalleryDAO{
 	}
 
 	@Override
-	public void update(Gallery gallery) {
+	public void update(Gallery gallery) throws GalleryException{
+		SqlSession sqlSession = mybatisConfig.getSqlSession();
+		int result=sqlSession.update("Gallery.update", gallery);
+		sqlSession.commit();
+		mybatisConfig.release(sqlSession);
 		
+		if(result<1) { // 수정 실패시
+			throw new GalleryException("수정 실패");
+		}
 	}
 
 	@Override

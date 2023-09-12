@@ -47,7 +47,13 @@ public class GalleryServiceImpl implements GalleryService{
 
 	@Override
 	public void update(Gallery gallery) {
+		//gallery 업데이트
+		galleryDAO.update(gallery);
 		
+//		for(GalleryImg galleryImg : gallery.getGalleryImgList()) {
+//			galleryImgDAO.update(galleryImg);	
+//		}		
+
 	}
 
 	@Override

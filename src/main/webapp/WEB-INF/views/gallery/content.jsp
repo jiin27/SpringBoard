@@ -49,18 +49,15 @@ input[type=button]:hover {
 </style>
 <%@ include file="./inc/head_link.jsp" %>
 <script type="text/javascript">
-function regist(){
-	$("form").attr({
-		action:"/gallery/regist",
-		method:"post",
-		enctype:"multipart/form-data"
-	});
-	$("form").submit();
-}
 
 $(function(){
 	$("#bt_edit").click(function(){
-		regist();
+		$("form").attr({
+			action: "/gallery/update",
+			method: "post",
+			enctype: "multipart/form-data"			
+		});
+		$("form").submit();
 	});
 	
 	$("#bt_del").click(function(){
@@ -85,7 +82,7 @@ $(function(){
 	<h3>게시글 상세보기</h3>
 
 	<div class="container">
-		<form>
+		<form id="gallery" name="gallery">
 			<input type="hidden" name="gallery_idx" value="<%=gallery.getGallery_idx()%>">
 			
 			<input type="text" name="title" value="<%=gallery.getTitle()%>"> 
@@ -98,6 +95,9 @@ $(function(){
 				<img src="/static/data/<%=galleryImg.getFilename() %>" width="150px">
 			</p>
 			<%} %>
+			<input type="file" id="lname" name="photo">
+			<br>
+			<input type="file" id="lname" name="photo">
 			<p>
 			<input type="button" value="수정" id="bt_edit">
 			<input type="button" value="삭제" id="bt_del">

@@ -31,7 +31,7 @@ a{
 	text-decoration: none;
 }
 </style>
-<%@ include file="./inc/head_link.jsp" %>
+<%@ include file="../inc/head_link.jsp" %>
 <script type="text/javascript">
 $(function(){
 	$("#bt_regist").click(function(){

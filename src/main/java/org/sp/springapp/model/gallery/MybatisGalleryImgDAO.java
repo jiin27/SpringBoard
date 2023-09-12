@@ -39,8 +39,15 @@ public class MybatisGalleryImgDAO implements GalleryImgDAO{
 	}
 
 	@Override
-	public void update(GalleryImgDAO galleryImg) {
+	public void update(GalleryImg galleryImg) throws GalleryImgException{
+		SqlSession sqlSession = mybatisConfig.getSqlSession();
+		int result = sqlSession.delete("GalleryImg.update", galleryImg);
+		sqlSession.commit();
+		mybatisConfig.release(sqlSession);
 		
+		if(result<1) { //업데이트 실패시
+			throw new GalleryImgException("이미지 레코드 수정 실패");			
+		}
 	}
 
 	@Override
