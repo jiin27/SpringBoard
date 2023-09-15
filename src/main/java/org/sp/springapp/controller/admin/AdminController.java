@@ -17,25 +17,25 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminController {
 
 	@Autowired
-	private AdminService adminService;
+	private AdminService adminService; //bean태그를 이용해 메모리에 올리지 않으면 null 상태
 	
 	//로그인 폼 요청처리
-	@GetMapping("/admin/loginform")
+	@GetMapping("/loginform")
 	public ModelAndView loginform() {
 		ModelAndView mav = new ModelAndView("admin/loginform");
 		
 		return mav;
 	}
-	
+
 	//관리자 메인 요청 처리
-	@GetMapping("/admin/main")
+	@GetMapping("/main")
 	public ModelAndView getMain() {
 		ModelAndView mav = new ModelAndView("admin/index");
 		return mav;
 	}
 	
 	//로그인 요청 처리
-	@PostMapping("/admin/login")
+	@PostMapping("/login")
 	public ModelAndView login(Admin admin, HttpServletRequest request) {
 		//3단계: 일치하는 관리자가 있는지 조회
 		Admin dto = adminService.login(admin);

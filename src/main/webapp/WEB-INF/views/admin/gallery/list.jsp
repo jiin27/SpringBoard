@@ -1,3 +1,4 @@
+<%@page import="org.sp.springapp.domain.Admin"%>
 <%@page import="org.sp.springapp.domain.GalleryImg"%>
 <%@page import="org.sp.springapp.domain.Gallery"%>
 <%@page import="java.util.List"%>
@@ -6,6 +7,7 @@
 <%
 	Pager pager = (Pager)request.getAttribute("pager");
 	List<Gallery> galleryList = (List)request.getAttribute("galleryList");
+	Admin admin=(Admin)session.getAttribute("admin");
 %>
 <!DOCTYPE html>
 <html>
@@ -34,20 +36,17 @@ a{
 <%@ include file="../inc/head_link.jsp" %>
 <script type="text/javascript">
 $(function(){
-	$("#bt_regist").click(function(){
-		location.href="/gallery/registform";
+	$("#bt_main").click(function(){
+		location.href="/admin/main";
 	});
 	
-	$("#bt_admin").click(function(){
-		location.href="/admin/loginform";
-	});
 })
 </script>
 </head>
 <body>
 
-	<h2>Java 개발자 자유게시판</h2>
-	<p>Java 개발자 여러분 환영합니다.</p>
+	<h2>Java 개발자 자유게시판 관리자모드</h2>
+	<p>관리자: <%=admin.getName() %>님 어서오세요.</p>
 
 	<table>
 		<tr>
@@ -96,11 +95,8 @@ $(function(){
 		</tr>
 		
 		<tr>
-			<td colspan="5">
-				<button id="bt_regist">글쓰기</button>
-			</td>
-			<td>
-				<button id="bt_admin">관리자모드</button>
+			<td colspan="6">
+				<button id="bt_main">관리자 메인으로</button>
 			</td>
 		</tr>
 		

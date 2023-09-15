@@ -26,16 +26,8 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/views/"
 		p:suffix=".jsp" />
-	
-	<!-- 업로드 설정 -->
-	<beans:bean id="multipartResolver" 
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" 
-		p:maxUploadSize="2097152"/>	
 		
-	<!-- mybatis 팩토리 보유객체 등록-->
-	<beans:bean class="org.sp.springapp.mybatis.MybatisConfig" id="mybatisConfig" factory-method="getInstance"/>
-	
-	<context:component-scan base-package="org.sp.springapp" />
+	<context:component-scan base-package="org.sp.springapp.controller.client" />
 	
 	
 	

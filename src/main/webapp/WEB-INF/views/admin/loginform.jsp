@@ -145,6 +145,10 @@ $(function(){
 	$("#bt_login").click(function(){
 		loginCheck();
 	});
+	
+	$("#bt_signup").click(function(){
+		location.href="/admin/signup";
+	});
 });
 </script>
 </head>
@@ -195,7 +199,7 @@ $(function(){
 	<div class="bottom-container">
 		<div class="row">
 			<div class="col">
-				<a href="#" style="color: white" class="btn">Sign up</a>
+				<a id="bt_signup" style="color: white" class="btn">Sign up</a>
 			</div>
 			<div class="col">
 				<a href="#" style="color: white" class="btn">Forgot password?</a>
