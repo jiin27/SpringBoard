@@ -2,6 +2,7 @@ package org.sp.springapp.model.admin;
 
 import org.apache.ibatis.session.SqlSession;
 import org.sp.springapp.domain.Admin;
+import org.sp.springapp.exception.AdminException;
 import org.sp.springapp.mybatis.MybatisConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,6 +19,18 @@ public class MybatisAdminDAO implements AdminDAO{
 		mybatisConfig.release(sqlSession);
 		
 		return dto;
+	}
+
+	@Override
+	public void signup(Admin admin) throws AdminException{
+		SqlSession sqlSession = mybatisConfig.getSqlSession();
+		int result=sqlSession.insert("Admin.signup", admin);
+		sqlSession.commit();
+		mybatisConfig.release(sqlSession);
+		
+		if(result==0) {
+			throw new AdminException("회원가입 실패");
+		}
 	}
 	
 }

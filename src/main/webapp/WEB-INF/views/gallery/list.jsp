@@ -39,7 +39,7 @@ $(function(){
 	});
 	
 	$("#bt_admin").click(function(){
-		location.href="/admin/loginform";
+		location.href="/admin/signup";
 	});
 })
 </script>

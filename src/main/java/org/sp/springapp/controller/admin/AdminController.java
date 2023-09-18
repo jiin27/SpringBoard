@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -20,9 +22,9 @@ public class AdminController {
 	private AdminService adminService; //bean태그를 이용해 메모리에 올리지 않으면 null 상태
 	
 	//로그인 폼 요청처리
-	@GetMapping("/loginform")
+	@GetMapping("/signup")
 	public ModelAndView loginform() {
-		ModelAndView mav = new ModelAndView("admin/loginform");
+		ModelAndView mav = new ModelAndView("admin/signup");
 		
 		return mav;
 	}
@@ -47,6 +49,18 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView("redirect:/admin/main");
 		
 		return mav;
+	}
+	
+	@PostMapping("/signup")
+	public String signup(Admin admin, HttpServletRequest request) throws AdminException{
+		adminService.signup(admin);
+		System.out.println(admin.getAdmin_idx());
+		System.out.println(admin.getId());
+		System.out.println(admin.getName());
+		
+		//return "redirect:/admin/singup";
+		
+		return "admin/signup";
 	}
 	
 	@ExceptionHandler(AdminException.class)

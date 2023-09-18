@@ -22,5 +22,11 @@ public class AdminServiceImpl implements AdminService{
 		return dto;
 	}
 
+	@Override
+	public void signup(Admin admin) throws AdminException{
+		adminDAO.signup(admin);
+		
+	}
+
 	
 }

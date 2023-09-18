@@ -8,5 +8,10 @@
 		where id=#{id} and pass=#{pass}
 	</select>
 
+	<!-- 회원가입 -->
+	<insert id="signup" parameterType="Admin">
+		insert into admin(admin_idx, id, pass, name, email, phone)
+		values(seq_admin.nextval, #{id}, #{pass}, #{name}, #{email}, #{phone})
+	</insert>
 
 </mapper>
