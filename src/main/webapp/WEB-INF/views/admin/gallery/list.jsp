@@ -1,13 +1,13 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@page import="org.sp.springapp.domain.Admin"%>
 <%@page import="org.sp.springapp.domain.GalleryImg"%>
 <%@page import="org.sp.springapp.domain.Gallery"%>
 <%@page import="java.util.List"%>
 <%@page import="org.sp.springapp.util.Pager"%>
-<%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	Pager pager = (Pager)request.getAttribute("pager");
-	List<Gallery> galleryList = (List)request.getAttribute("galleryList");
 	Admin admin=(Admin)session.getAttribute("admin");
+	List<Gallery> galleryList=(List)request.getAttribute("galleryList");
 %>
 <!DOCTYPE html>
 <html>
@@ -29,31 +29,45 @@ th, td {
 tr:nth-child(even) {
 	background-color: #f2f2f2;
 }
+
 a{
 	text-decoration: none;
 }
+
+button {
+	background-color: #04AA6D;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+
 </style>
 <%@ include file="../inc/head_link.jsp" %>
 <script type="text/javascript">
 $(function(){
-	$("#bt_main").click(function(){
+	$("#bt_main").click(function() {
 		location.href="/admin/main";
 	});
-	
-})
+});
 </script>
 </head>
 <body>
 
-	<h2>Java 개발자 자유게시판 관리자모드</h2>
-	<p>관리자: <%=admin.getName() %>님 어서오세요.</p>
+	<h2>예매고객 문의 게시판</h2>
+	<p>관리자 모드: <%=admin.getName() %>님</p>
 
 	<table>
 		<tr>
 			<th>No</th>
 			<th>이미지</th>
 			<th>제목</th>
-			<th>작성자</th>
+			<th>예매자</th>
 			<th>등록일</th>
 			<th>조회수</th>
 		</tr>
@@ -66,7 +80,7 @@ $(function(){
 		<tr>
 			<td><%=num-- %></td>
 			<td><img src="/static/data/<%=galleryImg.getFilename()%>" width="45px"></td>
-			<td><a href="/gallery/content?gallery_idx=<%=gallery.getGallery_idx()%>"><%=gallery.getTitle() %></a></td>
+			<td><a href="/admin/content.jsp?gallery_idx=<%=gallery.getGallery_idx()%>"><%=gallery.getTitle() %></a></td>
 			<td><%=gallery.getWriter() %></td>
 			<td><%=gallery.getRegdate() %></td>
 			<td><%=gallery.getHit() %></td>

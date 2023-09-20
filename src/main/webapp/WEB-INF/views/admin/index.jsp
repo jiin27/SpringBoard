@@ -6,87 +6,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>관리자모드: <%=admin.getName() %></title>
 <style>
-body {font-family: Arial;}
-
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+body {
+  font-family: "Lato", sans-serif;
 }
 
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
+.sidepanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 250px;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
   transition: 0.3s;
-  font-size: 17px;
 }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
+.sidepanel a:hover {
+  color: #f1f1f1;
 }
 
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
 }
 
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
 }
+
+.openbtn:hover {
+  background-color:#444;
+}
+
 </style>
+<script type="text/javascript">
+
+</script>
 </head>
+<body>
+
+<div id="mySidepanel" class="sidepanel">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="./gallery/list.jsp">게시판 관리</a>
+  <a	href="./booking.jsp">예약자 관리</a>
+  <a href="#">관리자 공지사항</a>
+</div>
+
+<button class="openbtn" onclick="openNav()">☰ 관리자 메뉴</button>  
+<h2>Ticket to the Moon</h2>
+<p>관리자 모드 : <%=admin.getName() %></p>
+
 <script>
-function openTab(evt, TabMenu) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(TabMenu).style.display = "block";
-  evt.currentTarget.className += " active";
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
 }
 </script>
-<body>
-	<h2>Ticket to the Moon 관리자 모드</h2>
-	<p><%=admin.getName() %>님 로그인</p>
-
-	<div class="tab">
-	  <button class="tablinks" onclick="openTab(event, 'board')">게시판 관리</button>
-	  <button class="tablinks" onclick="openTab(event, 'booking')">예약 관리</button>
-	  <button class="tablinks" onclick="openTab(event, 'adminList')">관리자 명단</button>
-	</div>
-
-	<div id="board" class="tabcontent">
-
-	</div>
-
-	<div id="booking" class="tabcontent">
-		<%@ include file="./bookinglist.jsp" %>
-	</div>
-	
-	<div id="adminList" class="tabcontent">
-
-	</div>
-
-
+   
 </body>
-</html>
+</html> 

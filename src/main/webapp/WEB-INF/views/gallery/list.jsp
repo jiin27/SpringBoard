@@ -46,8 +46,8 @@ $(function(){
 </head>
 <body>
 
-	<h2>Java 개발자 자유게시판</h2>
-	<p>Java 개발자 여러분 환영합니다.</p>
+	<h2>Ticket to the Moon 문의 게시판</h2>
+	<p>예매자 성함과 전시명을 꼭 입력해주세요.</p>
 
 	<table>
 		<tr>

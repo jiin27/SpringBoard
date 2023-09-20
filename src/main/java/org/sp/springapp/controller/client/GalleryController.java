@@ -43,6 +43,7 @@ public class GalleryController {
 	//게시판 목록 요청  처리
 	@RequestMapping(value="/gallery/list",method=RequestMethod.GET)
 	public ModelAndView getList(HttpServletRequest request) {
+				
 		//3단계 : 일 시키기
 		List galleryList = galleryService.selectAll();
 		

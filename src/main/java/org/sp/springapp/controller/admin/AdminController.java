@@ -36,6 +36,14 @@ public class AdminController {
 		return mav;
 	}
 	
+	//관리자 예약 관리 페이지 요청 처리
+	@GetMapping("/booking")
+	public ModelAndView getBookingList() {
+		ModelAndView mav = new ModelAndView("admin/booking");
+		
+		return mav;
+	}
+	
 	//로그인 요청 처리
 	@PostMapping("/login")
 	public ModelAndView login(Admin admin, HttpServletRequest request) {
@@ -53,12 +61,7 @@ public class AdminController {
 	
 	@PostMapping("/signup")
 	public String signup(Admin admin, HttpServletRequest request) throws AdminException{
-		adminService.signup(admin);
-		System.out.println(admin.getAdmin_idx());
-		System.out.println(admin.getId());
-		System.out.println(admin.getName());
-		
-		//return "redirect:/admin/singup";
+		adminService.signup(admin);		
 		
 		return "admin/signup";
 	}
